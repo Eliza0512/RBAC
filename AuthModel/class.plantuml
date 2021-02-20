@@ -1,0 +1,77 @@
+@startuml
+title:权限通用模型-类图
+
+' skinparam linetype ortho
+
+
+class "Entity\n实体" as Entity{
+
+}
+
+class "User\n用户" as User{
+
+}
+
+class "Dept\n部门" as Dept{
+
+}
+
+class "Company\n公司" as Company{
+
+}
+
+class "Job\n岗位" as Job{
+
+}
+
+
+Entity <|-- User
+Entity <|-- Dept
+Entity <|-- Company
+Entity <|-- Job
+
+class "Role\n角色" as Role{
+    roleID 角色id
+    name 角色名称
+    note 备注
+    + newRole() 新建角色
+    + edit() 编辑角色 
+}
+
+Entity <-right-> Role: "关联"
+
+
+
+class "Node\n权限点" as Node{
+    nodeID 权限点ID
+    name 权限点名称
+    code 权限编码
+    note 备注
+}
+
+class "App\n应用" as App{
+
+}
+
+class "Api\n接口" as Api{
+
+}
+
+class "Page\n页面" as Page{
+
+}
+
+Node <|-- App
+Node <|-- Api
+Node <|-- Page
+
+
+Role o-right- Node: "聚合"
+
+
+
+
+
+
+
+@enduml
